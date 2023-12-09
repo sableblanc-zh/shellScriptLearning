@@ -7,6 +7,7 @@ if [ ! -z $filepath ]
 then
 	if [ -f $filepath ]
 	then
+ 		#Get the name of the file
 		filename=$(basename $filepath | cut -d. -f1)
 		cat $filepath | tr -d [:punct:] | tr -s [:space:] | tr [:space:] "\n" | sort -i | uniq -ic | awk '{print $2, $1}' | sort -i > "${filename}_count.txt"
 	else
